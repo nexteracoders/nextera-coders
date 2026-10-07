@@ -1,0 +1,77 @@
+{
+  "name": "NextEra Coders",
+  "short_name": "NextEra Coders",
+  "description": "Master Data Structures & Algorithms, Full-Stack Web Development, live in-browser compiler, and Sunday competitive contests.",
+  "start_url": "/",
+  "scope": "/",
+  "id": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "background_color": "#090d16",
+  "theme_color": "#090d16",
+  "orientation": "any",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["education", "developer", "productivity"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Live Compiler",
+      "short_name": "Compiler",
+      "description": "Run Python, Java, C++, JS in zero-lag cloud sandbox",
+      "url": "/compiler",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Pattern DSA",
+      "short_name": "DSA",
+      "description": "Master 250+ patterns for tech interviews",
+      "url": "/dsa",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Weekly Contests",
+      "short_name": "Contests",
+      "description": "Compete and earn XP, prizes, and global ranks",
+      "url": "/contests",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Interactive Tutorials",
+      "short_name": "Tutorials",
+      "description": "Structured curriculum with quizzes & diagrams",
+      "url": "/tutorials",
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

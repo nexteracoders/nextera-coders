@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png?v=squircle" />
+    <link rel="shortcut icon" href="/favicon.png?v=squircle" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    
+    <!-- PWA & Mobile Web App Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="/icon-512.png" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="NextEra Coders" />
+    <meta name="application-name" content="NextEra Coders" />
+    <meta name="theme-color" content="#090d16" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#090d16" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Cinzel:wght@600;700;800;900&family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Fira+Code:wght@400;500;600&family=Great+Vibes&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&family=Marcellus&family=MonteCarlo&family=Outfit:wght@700;800;900&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <title>NextEra Coders</title>
+    <meta name="title" content="NextEra Coders" />
+    <meta name="description" content="NextEra Coders Learning is the modern full-stack edtech platform for developers to learn programming, solve DSA, build real-world production projects, and earn verifiable certificates." />
+    <meta name="keywords" content="coding platform, learn programming, data structures, algorithms, full stack development, software engineering, react, typescript, nodejs, leetcode alternative" />
+    <meta name="author" content="NextEra Coders" />
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nexteracoders.com/" />
+    <meta property="og:title" content="NextEra Coders" />
+    <meta property="og:description" content="NextEra Coders Learning is the modern full-stack edtech platform for developers to learn programming, solve DSA, build real-world production projects, and earn verifiable certificates." />
+    <meta property="og:image" content="https://nexteracoders.com/og-image.png" />
+    <meta property="og:site_name" content="NextEra Coders Learning" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://nexteracoders.com/" />
+    <meta property="twitter:title" content="NextEra Coders" />
+    <meta property="twitter:description" content="NextEra Coders Learning is the modern full-stack edtech platform for developers to learn programming, solve DSA, build real-world production projects, and earn verifiable certificates." />
+    <meta property="twitter:image" content="https://nexteracoders.com/og-image.png" />
+    
+    <!-- Google Identity Services (GSI) for Google Cloud Console OAuth -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </head>
+  <body class="bg-slate-50 text-slate-900 dark:bg-dark-950 dark:text-slate-100 min-h-screen font-sans antialiased transition-colors duration-200 selection:bg-brand-500 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        const isLocalhost = Boolean(
+          window.location.hostname === 'localhost' ||
+          window.location.hostname === '[::1]' ||
+          window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/)
+        );
+
+        if (isLocalhost) {
+          // In local development, unregister any active service worker and clear caches to prevent chunk import errors
+          navigator.serviceWorker.getRegistrations().then((registrations) => {
+            for (const registration of registrations) {
+              registration.unregister();
+            }
+          });
+          if ('caches' in window) {
+            caches.keys().then((names) => {
+              for (const name of names) caches.delete(name);
+            });
+          }
+        } else {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+              .then((registration) => {
+                console.log('✓ NextEra Coders PWA Service Worker active:', registration.scope);
+                registration.addEventListener('updatefound', () => {
+                  const newWorker = registration.installing;
+                  if (newWorker) {
+                    newWorker.addEventListener('statechange', () => {
+                      if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                        window.dispatchEvent(new CustomEvent('pwa-update-available'));
+                      }
+                    });
+                  }
+                });
+              })
+              .catch((error) => {
+                console.log('PWA Service Worker registration skipped:', error);
+              });
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

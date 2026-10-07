@@ -1,0 +1,1016 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .font-brand-sans {
+    font-family: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  }
+  .font-brand-serif {
+    font-family: 'Instrument Serif', 'Cormorant Garamond', 'Playfair Display', Georgia, serif !important;
+  }
+}
+
+@layer base {
+  :root {
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f8fafc;
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #64748b;
+    --color-border: #e2e8f0;
+  }
+
+  .dark {
+    --color-bg-primary: #090d16;
+    --color-bg-secondary: #0f172a;
+    --color-text-primary: #f8fafc;
+    --color-text-secondary: #94a3b8;
+    --color-border: #1e293b;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    max-width: 100vw;
+  }
+
+  body {
+    @apply bg-slate-50 dark:bg-dark-950 text-slate-900 dark:text-slate-100 antialiased;
+    overflow-x: clip;
+    max-width: 100vw;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+
+  /* Universal high-contrast inputs and forms for Light & Dark mode (excluding code editors & terminal inputs) */
+  input:not(.code-editor-textarea):not(.terminal-cli-input),
+  textarea:not(.code-editor-textarea):not(.terminal-cli-input),
+  select:not(.code-editor-select):not(.terminal-cli-input) {
+    @apply text-slate-900 dark:text-slate-100 bg-white dark:bg-dark-900 border-slate-300 dark:border-dark-800 placeholder:text-slate-400 dark:placeholder:text-slate-500;
+  }
+
+  input:not(.code-editor-textarea):not(.terminal-cli-input):focus,
+  textarea:not(.code-editor-textarea):not(.terminal-cli-input):focus,
+  select:not(.code-editor-select):not(.terminal-cli-input):focus {
+    @apply text-slate-900 dark:text-slate-100;
+  }
+
+  /* Dedicated Terminal CLI Input Styling - 100% Transparent & Vivid Blinking Caret */
+  .terminal-cli-input {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+    caret-color: #58a6ff !important;
+    font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+  }
+
+  .terminal-cli-input:focus {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+  }
+}
+
+/* ==========================================================================
+   PROFESSIONAL CODE EDITOR & SYNTAX HIGHLIGHTING
+   ========================================================================== */
+
+/* Editor container & textarea pixel-perfect isolation */
+.code-editor-textarea {
+  color: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  resize: none !important;
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  pointer-events: auto !important;
+  z-index: 20 !important;
+  cursor: text !important;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-feature-settings: "calt" 0 !important;
+  font-variant-ligatures: none !important;
+  text-rendering: geometricPrecision !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  letter-spacing: 0px !important;
+  word-spacing: 0px !important;
+  box-sizing: border-box !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.code-editor-pre {
+  box-sizing: border-box !important;
+  letter-spacing: 0px !important;
+  word-spacing: 0px !important;
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+  font-feature-settings: "calt" 0 !important;
+  font-variant-ligatures: none !important;
+  text-rendering: geometricPrecision !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+.code-editor-pre code {
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+  word-spacing: inherit !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-sizing: border-box !important;
+}
+
+.code-editor-textarea::-webkit-scrollbar {
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
+  background: transparent !important;
+}
+
+.code-editor-textarea::-webkit-scrollbar-track {
+  display: none !important;
+  background: transparent !important;
+}
+
+.code-editor-textarea::-webkit-scrollbar-thumb {
+  display: none !important;
+  background: transparent !important;
+}
+
+.code-editor-textarea::-webkit-scrollbar-corner {
+  display: none !important;
+  background: transparent !important;
+}
+
+/* Base fallback for code editor text */
+.code-editor-pre,
+.code-editor-pre code {
+  color: #1f2328;
+}
+
+/* ==========================================================================
+   NextEra Studio - Premium Eye-Catching Dark Code Palette (One Dark + Tokyo Night)
+   Vibrant, high-contrast, harmonious and easy on the eyes in dark mode
+   ========================================================================== */
+
+/* 1. Base Text & Caret in Code Editor - Dark Modes */
+.dark .code-editor-pre,
+.dark .code-editor-pre code,
+.editor-theme-vs-dark .code-editor-pre,
+.editor-theme-vs-dark .code-editor-pre code {
+  color: #cdd6f4 !important;
+}
+.dark .code-editor-textarea,
+.editor-theme-vs-dark .code-editor-textarea {
+  caret-color: #38bdf8 !important;
+  color-scheme: dark !important;
+}
+.dark .code-editor-textarea::selection,
+.editor-theme-vs-dark .code-editor-textarea::selection {
+  background-color: rgba(56, 189, 248, 0.25) !important;
+}
+
+/* 2. Comments - elegant, readable soft muted lavender-gray italic */
+.dark .token.comment,
+.dark .token.prolog,
+.dark .token.doctype,
+.dark .token.cdata,
+.dark .code-editor-pre .token.comment,
+.dark .code-editor-pre .token.prolog,
+.dark .code-editor-pre .token.doctype,
+.dark .code-editor-pre .token.cdata,
+.editor-theme-vs-dark .token.comment {
+  color: #7f849c !important;
+  font-style: italic !important;
+}
+
+/* 3. Punctuation & Delimiters - refined crisp slate-silver */
+.dark .token.punctuation,
+.dark .code-editor-pre .token.punctuation,
+.editor-theme-vs-dark .token.punctuation {
+  color: #9399b2 !important;
+}
+
+/* 4. HTML / XML Tags - glowing coral pink / rose (#f7768e) */
+.dark .token.tag,
+.dark .code-editor-pre .token.tag,
+.editor-theme-vs-dark .token.tag {
+  color: #f7768e !important;
+  font-weight: 600 !important;
+}
+
+/* HTML Tag Brackets (<, >, </, />) - electric sky blue */
+.dark .code-editor-pre .token.tag .token.punctuation,
+.editor-theme-vs-dark .token.tag .token.punctuation {
+  color: #7dcfff !important;
+  font-weight: normal !important;
+}
+
+/* 5. Attributes (HTML class, id, src, href, style, onclick) - radiant golden honey amber */
+.dark .token.attr-name,
+.dark .code-editor-pre .token.attr-name,
+.editor-theme-vs-dark .token.attr-name {
+  color: #e0af68 !important;
+  font-weight: 500 !important;
+}
+
+/* 6. Strings & Attribute Values - fresh luminous emerald / mint green (#9ece6a) */
+.dark .token.string,
+.dark .token.char,
+.dark .token.attr-value,
+.dark .code-editor-pre .token.string,
+.dark .code-editor-pre .token.char,
+.dark .code-editor-pre .token.attr-value,
+.editor-theme-vs-dark .token.string,
+.editor-theme-vs-dark .token.char,
+.editor-theme-vs-dark .token.attr-value {
+  color: #9ece6a !important;
+}
+.dark .code-editor-pre .token.attr-value .token.punctuation,
+.editor-theme-vs-dark .token.attr-value .token.punctuation {
+  color: #9ece6a !important;
+}
+
+/* 7. Keywords (def, return, import, const, let, function, class, if, while, public, void) - glowing amethyst violet */
+.dark .token.atrule,
+.dark .token.keyword,
+.dark .code-editor-pre .token.atrule,
+.dark .code-editor-pre .token.keyword,
+.editor-theme-vs-dark .token.atrule,
+.editor-theme-vs-dark .token.keyword {
+  color: #bb9af7 !important;
+  font-weight: 600 !important;
+}
+
+/* 8. Functions & Methods (print, console.log, len, sort, map, calculate_analytics) - radiant warm gold (#e5c07b) */
+.dark .token.function,
+.dark .code-editor-pre .token.function,
+.editor-theme-vs-dark .token.function {
+  color: #e5c07b !important;
+  font-weight: 600 !important;
+}
+
+/* 9. Numbers & Booleans (14, 100, true, false, None, null) - warm sunset orange (#ff9e64) */
+.dark .token.number,
+.dark .token.boolean,
+.dark .token.constant,
+.dark .code-editor-pre .token.number,
+.dark .code-editor-pre .token.boolean,
+.dark .code-editor-pre .token.constant,
+.editor-theme-vs-dark .token.number,
+.editor-theme-vs-dark .token.boolean,
+.editor-theme-vs-dark .token.constant {
+  color: #ff9e64 !important;
+  font-weight: 500 !important;
+}
+
+/* 10. Classes & Type Names (StudentRecord, List, String, vector) - electric turquoise cyan (#2ac3de) */
+.dark .token.class-name,
+.dark .token.builtin,
+.dark .code-editor-pre .token.class-name,
+.dark .code-editor-pre .token.builtin,
+.editor-theme-vs-dark .token.class-name,
+.editor-theme-vs-dark .token.builtin {
+  color: #2ac3de !important;
+  font-weight: 600 !important;
+}
+
+/* 11. CSS Selectors & Properties */
+.dark .token.selector,
+.dark .code-editor-pre .token.selector,
+.editor-theme-vs-dark .token.selector {
+  color: #f7768e !important;
+  font-weight: 600 !important;
+}
+.dark .token.property,
+.dark .code-editor-pre .token.property,
+.editor-theme-vs-dark .token.property {
+  color: #7dcfff !important;
+}
+
+/* 12. Operators (=, +, -, *, ==, !=, =>, &&, ||, ::) - bright sky cyan (#89ddff) */
+.dark .token.operator,
+.dark .token.entity,
+.dark .token.url,
+.dark .code-editor-pre .token.operator,
+.dark .code-editor-pre .token.entity,
+.dark .code-editor-pre .token.url,
+.editor-theme-vs-dark .token.operator {
+  color: #89ddff !important;
+}
+
+/* 13. Variables & Symbols */
+.dark .token.variable,
+.dark .token.symbol,
+.dark .code-editor-pre .token.variable,
+.dark .code-editor-pre .token.symbol,
+.editor-theme-vs-dark .token.variable,
+.editor-theme-vs-dark .token.symbol {
+  color: #7dcfff !important;
+}
+
+/* 14. Regex & Special */
+.dark .token.regex,
+.dark .token.important,
+.dark .code-editor-pre .token.regex,
+.dark .code-editor-pre .token.important,
+.editor-theme-vs-dark .token.regex,
+.editor-theme-vs-dark .token.important {
+  color: #fab387 !important;
+}
+
+/* Theme: One Dark Pro */
+.editor-theme-one-dark .token.comment { color: #5c6370 !important; font-style: italic; }
+.editor-theme-one-dark .token.punctuation { color: #abb2bf !important; }
+.editor-theme-one-dark .token.keyword { color: #c678dd !important; font-weight: 600; }
+.editor-theme-one-dark .token.function { color: #61afef !important; }
+.editor-theme-one-dark .token.string { color: #98c379 !important; }
+.editor-theme-one-dark .token.number, .editor-theme-one-dark .token.boolean { color: #d19a66 !important; }
+.editor-theme-one-dark .token.class-name { color: #e5c07b !important; }
+.editor-theme-one-dark .token.operator { color: #56b6c2 !important; }
+.editor-theme-one-dark .token.variable { color: #e06c75 !important; }
+
+/* Theme: Dracula */
+.editor-theme-dracula .token.comment { color: #6272a4 !important; font-style: italic; }
+.editor-theme-dracula .token.punctuation { color: #f8f8f2 !important; }
+.editor-theme-dracula .token.keyword { color: #ff79c6 !important; font-weight: 600; }
+.editor-theme-dracula .token.function { color: #50fa7b !important; }
+.editor-theme-dracula .token.string { color: #f1fa8c !important; }
+.editor-theme-dracula .token.number, .editor-theme-dracula .token.boolean { color: #bd93f9 !important; }
+.editor-theme-dracula .token.class-name { color: #8be9fd !important; }
+.editor-theme-dracula .token.operator { color: #ff79c6 !important; }
+.editor-theme-dracula .token.variable { color: #f8f8f2 !important; }
+
+/* Theme: Monokai */
+.editor-theme-monokai .token.comment { color: #75715e !important; font-style: italic; }
+.editor-theme-monokai .token.punctuation { color: #f8f8f2 !important; }
+.editor-theme-monokai .token.keyword { color: #f92672 !important; font-weight: 600; }
+.editor-theme-monokai .token.function { color: #a6e22e !important; }
+.editor-theme-monokai .token.string { color: #e6db74 !important; }
+.editor-theme-monokai .token.number, .editor-theme-monokai .token.boolean { color: #ae81ff !important; }
+.editor-theme-monokai .token.class-name { color: #66d9ef !important; }
+.editor-theme-monokai .token.operator { color: #f92672 !important; }
+.editor-theme-monokai .token.variable { color: #fd971f !important; }
+
+/* Theme: Cyberpunk Neon */
+.editor-theme-cyberpunk .token.comment { color: #6272a4 !important; font-style: italic; }
+.editor-theme-cyberpunk .token.punctuation { color: #00ffcc !important; }
+.editor-theme-cyberpunk .token.keyword { color: #ff007f !important; font-weight: 700; }
+.editor-theme-cyberpunk .token.function { color: #00e5ff !important; font-weight: 600; }
+.editor-theme-cyberpunk .token.string { color: #39ff14 !important; }
+.editor-theme-cyberpunk .token.number, .editor-theme-cyberpunk .token.boolean { color: #ffbf00 !important; }
+.editor-theme-cyberpunk .token.class-name { color: #ff00ff !important; }
+.editor-theme-cyberpunk .token.operator { color: #00ffff !important; }
+.editor-theme-cyberpunk .token.variable { color: #ff00aa !important; }
+
+/* ==========================================================================
+   NextEra Studio - Premium High-Contrast Light Code Palette (GitHub Light / Modern)
+   Ultra-crisp, high-contrast, crystal-clear code in light mode with no washed-out text
+   ========================================================================== */
+
+/* 1. Base Text, Unstyled Identifiers (nums, target, mp, complement, i) & Caret */
+.editor-theme-light .code-editor-pre,
+.editor-theme-light .code-editor-pre code,
+.editor-theme-light code,
+.light .editor-theme-light .code-editor-pre,
+.light .editor-theme-light .code-editor-pre code,
+.light:not(.dark) .code-editor-pre,
+.light:not(.dark) .code-editor-pre code {
+  color: #1f2328 !important;
+}
+
+.editor-theme-light .code-editor-textarea,
+.editor-theme-light.code-editor-textarea,
+.light:not(.dark) .code-editor-textarea {
+  color-scheme: light !important;
+  caret-color: #0969da !important;
+}
+
+.editor-theme-light .code-editor-textarea::selection,
+.light:not(.dark) .code-editor-textarea::selection {
+  background-color: rgba(9, 105, 218, 0.2) !important;
+}
+
+/* 2. Comments - soft readable neutral slate */
+.editor-theme-light .token.comment,
+.editor-theme-light .token.prolog,
+.editor-theme-light .token.doctype,
+.editor-theme-light .token.cdata {
+  color: #6e7781 !important;
+  font-style: italic !important;
+}
+
+/* 3. Punctuation & Delimiters - crisp dark charcoal */
+.editor-theme-light .token.punctuation {
+  color: #24292e !important;
+}
+
+/* 4. Keywords (class, public, return, for, if, while, const, auto) - bold vivid crimson */
+.editor-theme-light .token.atrule,
+.editor-theme-light .token.keyword {
+  color: #cf222e !important;
+  font-weight: 600 !important;
+}
+
+/* 5. Builtins & Types (int, void, vector, string, unordered_map, bool, char, double) - rich deep sapphire */
+.editor-theme-light .token.builtin {
+  color: #0550ae !important;
+  font-weight: 600 !important;
+}
+
+/* 6. Classes & Structs (Solution, ListNode, TreeNode) - warm burnt amber */
+.editor-theme-light .token.class-name {
+  color: #953800 !important;
+  font-weight: 600 !important;
+}
+
+/* 7. Functions & Methods (twoSum, find, size, end, push_back, main) - rich royal purple */
+.editor-theme-light .token.function {
+  color: #8250df !important;
+  font-weight: 600 !important;
+}
+
+/* 8. Strings & Chars ("...", '...') - deep emerald forest green */
+.editor-theme-light .token.string,
+.editor-theme-light .token.char,
+.editor-theme-light .token.attr-value {
+  color: #116329 !important;
+}
+
+/* 9. Numbers & Booleans (0, 1, 100, true, false, NULL) - crisp electric cobalt */
+.editor-theme-light .token.number,
+.editor-theme-light .token.boolean,
+.editor-theme-light .token.constant {
+  color: #0550ae !important;
+  font-weight: 500 !important;
+}
+
+/* 10. Operators (=, +, -, *, !=, ==, &&, ||, &, <, >, ::) - sharp crimson red */
+.editor-theme-light .token.operator,
+.editor-theme-light .token.entity,
+.editor-theme-light .token.url {
+  color: #cf222e !important;
+  font-weight: 600 !important;
+}
+
+/* 11. Variables, Properties & Attributes */
+.editor-theme-light .token.variable,
+.editor-theme-light .token.property,
+.editor-theme-light .token.attr-name,
+.editor-theme-light .token.symbol {
+  color: #953800 !important;
+}
+
+/* 12. HTML/XML Tags */
+.editor-theme-light .token.tag {
+  color: #116329 !important;
+  font-weight: 600 !important;
+}
+.editor-theme-light .token.tag .token.punctuation {
+  color: #0550ae !important;
+}
+
+/* 13. Selectors, Regex & Directives */
+.editor-theme-light .token.selector {
+  color: #0550ae !important;
+  font-weight: 600 !important;
+}
+.editor-theme-light .token.regex,
+.editor-theme-light .token.important {
+  color: #0a3069 !important;
+}
+.editor-theme-light .token.macro,
+.editor-theme-light .token.directive {
+  color: #cf222e !important;
+  font-weight: 600 !important;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* Infinite Circular Marquee Animations */
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 45s linear infinite;
+}
+
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marqueeRight 45s linear infinite;
+}
+
+.marquee-row:hover .animate-marquee-left,
+.marquee-row:hover .animate-marquee-right,
+.marquee-row:active .animate-marquee-left,
+.marquee-row:active .animate-marquee-right,
+.marquee-row.is-paused .animate-marquee-left,
+.marquee-row.is-paused .animate-marquee-right {
+  animation-play-state: paused;
+}
+
+@media (max-width: 640px) {
+  .animate-marquee-left {
+    animation-duration: 65s;
+  }
+  .animate-marquee-right {
+    animation-duration: 65s;
+  }
+}
+
+/* 3D Animated Golden Coin Keyframes */
+@keyframes coinFlip3D {
+  0% {
+    transform: perspective(600px) rotateY(0deg) scale(0.95);
+  }
+  50% {
+    transform: perspective(600px) rotateY(180deg) scale(1.08);
+  }
+  100% {
+    transform: perspective(600px) rotateY(360deg) scale(0.95);
+  }
+}
+
+@keyframes goldShine {
+  0% {
+    filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 35px rgba(251, 191, 36, 0.95));
+  }
+  100% {
+    filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.5));
+  }
+}
+
+.animate-coin-3d {
+  animation: coinFlip3D 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite, goldShine 2s ease-in-out infinite;
+}
+
+/* 3D Phone Rotate Animation for Landscape Prompt */
+@keyframes phoneRotate3D {
+  0%, 15% {
+    transform: rotate(0deg) scale(1);
+  }
+  45%, 70% {
+    transform: rotate(-90deg) scale(1.05);
+  }
+  95%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.animate-phone-rotate {
+  animation: phoneRotate3D 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+
+/* Hide scrollbar utilities across all modern browsers */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ==========================================================================
+   CIRCULAR ORBIT ANIMATION KEYFRAMES
+   ========================================================================== */
+@keyframes orbitSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitCounterSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.animate-orbit-spin {
+  animation: orbitSpin 20s linear infinite;
+}
+
+.animate-orbit-counter {
+  animation: orbitCounterSpin 20s linear infinite;
+}
+
+
+@keyframes orbitAlwaysUpright {
+  0% {
+    transform: rotate(0deg) translateX(var(--orbit-r, 120px)) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(var(--orbit-r, 120px)) rotate(-360deg);
+  }
+}
+
+.animate-orbit-upright {
+  animation: orbitAlwaysUpright 25s linear infinite;
+  will-change: transform;
+}
+
+/* ==========================================================================
+   SMOOTH UP-DOWN FLOATING LOGO ANIMATION
+   ========================================================================== */
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes floatDiamond {
+  0%, 100% {
+    transform: translateY(0px) rotate(45deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(45deg);
+  }
+}
+
+.animate-float {
+  animation: floatUpDown 3.5s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: floatUpDown 5s ease-in-out infinite;
+}
+
+.animate-float-diamond {
+  animation: floatDiamond 4s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   ADVANCED INTERACTIVE SHOWCASE ANIMATIONS
+   ========================================================================== */
+@keyframes floatSubtle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-7px) rotate(1deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(7px) rotate(-1deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes scanLine {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+@keyframes laserShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes packetTravel {
+  0% {
+    left: 0%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes packetTravelRev {
+  0% {
+    left: 100%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    left: 0%;
+    opacity: 0;
+  }
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes pingSlow {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  75%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes progressTimer {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+.animate-float-subtle {
+  animation: floatSubtle 4s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 4.5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.animate-scan-line {
+  animation: scanLine 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-laser-shimmer {
+  background-size: 200% 100%;
+  animation: laserShimmer 3s linear infinite;
+}
+
+.animate-packet {
+  animation: packetTravel 2.2s ease-in-out infinite;
+}
+
+.animate-packet-rev {
+  animation: packetTravelRev 2.2s ease-in-out infinite;
+}
+
+.animate-blink {
+  animation: blinkCursor 0.9s step-start infinite;
+}
+
+.animate-progress-timer {
+  animation: progressTimer 5.5s linear forwards;
+}
+
+/* Organic Feathered Portrait Mask (Like CodeHelp Reference) */
+.mentor-feather-mask {
+  mask-image: radial-gradient(ellipse 72% 70% at 50% 48%, black 44%, rgba(0, 0, 0, 0.85) 62%, rgba(0, 0, 0, 0.35) 78%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 72% 70% at 50% 48%, black 44%, rgba(0, 0, 0, 0.85) 62%, rgba(0, 0, 0, 0.35) 78%, transparent 95%);
+}
+
+@keyframes mentorFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+.animate-mentor-float {
+  animation: mentorFloat 4.8s ease-in-out infinite;
+}
+
+/* 3D Spinning Golden NEC Coin Animation */
+@keyframes spinCoin3D {
+  0% {
+    transform: perspective(700px) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(700px) rotateY(180deg) scale(1.05);
+  }
+  100% {
+    transform: perspective(700px) rotateY(360deg);
+  }
+}
+
+.animate-coin-3d {
+  animation: spinCoin3D 4s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+/* ==========================================================================
+   PWA & MOBILE APP TOUCH UTILITIES
+   ========================================================================== */
+
+/* Safe area insets for notched iPhones and Android edge-to-edge navigation bars */
+.safe-area-bottom {
+  padding-bottom: max(12px, env(safe-area-inset-bottom, 12px));
+}
+
+.safe-area-top {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Hide scrollbar for mobile swipe trays & horizontal menus */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+
+/* Standalone PWA adjustments (when installed to home screen) */
+@media all and (display-mode: standalone) {
+  body {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Allow text selection in code editors, reading tutorials, and inputs */
+  input, textarea, [contenteditable="true"], .code-editor-textarea, .selectable-text {
+    user-select: text !important;
+    -webkit-user-select: text !important;
+  }
+}
+
+/* 3D Phone Rotation Animation for Landscape Orientation Prompt */
+@keyframes phoneRotate3D {
+  0%, 15% {
+    transform: rotate(0deg) scale(1);
+  }
+  40%, 65% {
+    transform: rotate(-90deg) scale(1.08);
+  }
+  85%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.animate-phone-rotate {
+  animation: phoneRotate3D 3s ease-in-out infinite;
+  transform-origin: center center;
+  display: inline-block;
+}
+
+/* Right-to-Left Dropdown Slide Animation (emerges smoothly from right-to-left under element) */
+@keyframes dropdownSlideRTL {
+  0% {
+    opacity: 0;
+    transform: translate(26px, 6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.animate-dropdown-slide,
+.animate-nav-slide-rtl {
+  animation: dropdownSlideRTL 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fallback Clean Dropdown Drop & Fade Animation */
+@keyframes dropdownFadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-dropdown-fade {
+  animation: dropdownFadeSlide 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Arrow nudge back-and-forth animation on button hover */
+@keyframes arrowNudgeX {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+.group:hover .group-hover-arrow-nudge {
+  animation: arrowNudgeX 0.75s ease-in-out infinite;
+}

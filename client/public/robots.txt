@@ -1,0 +1,31 @@
+# NextEra Coders Learning - Robots.txt
+User-agent: *
+Allow: /
+Allow: /courses
+Allow: /courses/*
+Allow: /dsa
+Allow: /dsa/*
+Allow: /practice
+Allow: /projects
+Allow: /projects/*
+Allow: /tutorials
+Allow: /tutorials/*
+Allow: /quizzes
+Allow: /about
+Allow: /verify-certificate/*
+
+# Disallow Private Student & Admin Control Panels
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /dashboard
+Disallow: /dashboard/*
+Disallow: /profile
+Disallow: /profile/*
+Disallow: /my-learning
+Disallow: /my-learning/*
+Disallow: /course/*/learn
+Disallow: /unauthorized
+Disallow: /forbidden
+Disallow: /server-error
+
+Sitemap: https://nexteracoders.com/sitemap.xml

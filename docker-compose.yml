@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # NextEra Coders Express API Server
+  api:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: nextera-coders-api
+    restart: unless-stopped
+    ports:
+      - '5000:5000'
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+      - CLIENT_URL=http://localhost:5173
+      - SERVER_URL=http://localhost:5000
+      - DATABASE_URL=mongodb://mongo:27017/nextera_coders
+      - JWT_SECRET=production_docker_secret_nextera_coders_learning_2026!
+      - JWT_EXPIRES_IN=7d
+      - COOKIE_NAME=nextera_auth_token
+    depends_on:
+      - mongo
+    networks:
+      - nextera-network
+
+  # MongoDB Local Database Service
+  mongo:
+    image: mongo:7.0
+    container_name: nextera-coders-mongo
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - nextera-network
+
+volumes:
+  mongo_data:
+
+networks:
+  nextera-network:
+    driver: bridge

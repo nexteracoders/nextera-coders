@@ -1,0 +1,16 @@
+export const logger = {
+  info: (message: string, ...args: unknown[]) => {
+    console.log(`[${new Date().toISOString()}] [INFO] ${message}`, ...args);
+  },
+  warn: (message: string, ...args: unknown[]) => {
+    console.warn(`[${new Date().toISOString()}] [WARN] ${message}`, ...args);
+  },
+  error: (message: string, ...args: unknown[]) => {
+    console.error(`[${new Date().toISOString()}] [ERROR] ${message}`, ...args);
+  },
+  debug: (message: string, ...args: unknown[]) => {
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(`[${new Date().toISOString()}] [DEBUG] ${message}`, ...args);
+    }
+  },
+};
